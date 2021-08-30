@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Project.css">
+    <title>Air Quality Tracker</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul id="header">
+                <li class="siteheading">AIR QUALITY TRACKER</li>
+                <div class="restheader">
+                    <input type="text" name="locationsearch" id="locationsearch"
+                        placeholder="data availability?(search location)">
+                </div>
+                <li><button class="headerbutton" type="button" onclick="fun1()">Search</button></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="middle">
+        <div id="onlineaqi">
+            <div class="wholeline mainheading fonthm wholelinecentre">
+             Current AQI Index and Temperature :
+            </div>
+            <div class="wholeline fontsm wholelinecentre" id="abovestatus"> search from above</div>
+        </div>
+        <form action="#">
+        <div id="formpart">
+            <div class="wholeline sectionpart mainheading fonthm wholelinecentre">
+                Below here you can generate Graph for past trend of different pollutant/parameter level changes
+            </div>
+            <div class="wholeline sectionpart">
+                <div class="centrediv">
+                <div class="wholeline">
+                <label for="typecity" class="mainheading fonthm">1.<span class="fontm">City</span>:</label>
+                <input type="text" id="typecity" class="box" placeholder="Enter The City" required>
+                </div>
+                </div>
+            </div>
+            <div class="wholeline sectionpart">
+                <div class="centrediv">
+                <div class="wholeline mainheading">
+                    <div class="fonthm">
+                    2.<label class="fontm">Time period by</label> -:
+                    </div>
+                </div>
+                <div class="wholeline">
+                    <input type="radio" id="bydate" name="selectby" onclick="enabledate()"><label for="bydate"
+                        class="mainheading">Date</label> ::
+                    <label for="fromdate">From</label>
+                    <input type="date" id="fromdate" class="box">
+                    <label for="todate">To</label>
+                    <input type="date" id="todate" class="box">
+                </div>
+                <div class="wholeline">
+                    <input type="radio" id="byseason" name="selectby" onclick="enableseason()">
+                    <label for="byseason" class="mainheading">Season</label> ::
+                    <label for="season">Season</label>
+                    <select id="season" class="box">
+                        <option value="">None</option>
+                        <option value="spring">Spring</option>
+                        <option value="summer">Summer</option>
+                        <option value="mansoon">Monsoon</option>
+                        <option value="autumn">Autumn</option>
+                        <option value="winter">Winter</option>
+                    </select>
+                    <label for="seasonyear">Year</label>
+                    <select id="seasonyear" class="box">
+                        <option value="">None</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                    </select>
+                </div>
+                <div class="wholeline">
+                    <input type="radio" id="byweek" name="selectby" onclick="enableweek()">
+                    <label for="byweek" class="mainheading">Month/Week</label> ::
+                    <div class="wholeline">
+                        <label>From : </label>
+                        <label for="fromyear">Year</label>
+                        <select id="fromyear" class="box">
+                            <option value="">None</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                        </select>
+                        <label for="frommonth">Month</label>
+                        <select id="frommonth" class="box">
+                            <option value="">None</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="17">December</option>
+                        </select>
+                        <label for="fromweek">Week</label>
+                        <select id="fromweek" class="box">
+                            <option value="">None</option>
+                            <option value="01">First Week</option>
+                            <option value="08">Second Week</option>
+                            <option value="15">Third Week</option>
+                            <option value="22">Last Week</option>
+                        </select>
+                    </div>
+                    <div class="wholeline">
+                        <label> To : </label>
+                        <label for="toyear">Year</label>
+                        <select id="toyear" class="box">
+                            <option value="">None</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                        </select>
+                        <label for="tomonth">Month</label>
+                        <select id="tomonth" class="box">
+                            <option value="">None</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="17">December</option>
+                        </select>
+                        <label for="toweek">Week</label>
+                        <select id="toweek" class="box">
+                            <option value="">None</option>
+                            <option value="07">First Week</option>
+                            <option value="14">Second Week</option>
+                            <option value="21">Third Week</option>
+                            <option value="1">Last Week</option>
+                        </select>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wholeline sectionpart">
+                <div class="centrediv">
+                <div class="wholeline mainheading">
+                    <div class="fonthm">
+                    3.<label class="fontm">Select parameter/pollutant</label> -:
+                   </div>
+                </div>
+                <div class="wholeline">
+                    <input type="radio" id="byparameter" name="parameterpollutant" onclick="enableparameter()"><label
+                        for="byparameter" class="mainheading">Parameter</label> ::
+                    <input type="radio" id="aqi" name="parameter" onclick="parametervalue(1)"><label for="aqi">AQI
+                        Index</label>
+                    <input type="radio" id="temperature" name="parameter" onclick="parametervalue(2)"><label
+                        for="temperature">Temperature</label>
+                </div>
+                <div class="wholeline">
+                    <input type="radio" id="bypollutant" name="parameterpollutant" onclick="enablepollutant()"><label
+                        for="bypollutant" class="mainheading">Pollutant</label> ::
+                    <label for="pollutant">Pollutant: </label>
+                    <select id="pollutant" class="box">
+                        <option value="">None</option>
+                        <option value="pm10">PM10</option>
+                        <option value="pm25">PM2.5</option>
+                        <option value="no2">NO2</option>
+                        <option value="so2">SO2</option>
+                        <option value="o3">O3</option>
+                        <option value="co">CO</option>
+                    </select>
+                    <label for="concsubindex">Get values by : </label>
+                    <input type="radio" id="bypollutantconc" name="pollutantconcsubindex"
+                        onclick="pollutantvalue(1)"><label for="bypollutantconc">Concentration</label>
+                    <input type="radio" id="bypollutantsubindex" name="pollutantconcsubindex"
+                        onclick="pollutantvalue(2)"><label for="bypollutantsubindex">AQI Subindex</label>
+                </div>
+                <div class="wholeline fontsm">
+                    <div class="wholeline"> 
+                    <label class="mainheading"><span>AQI Index standard :</span></label>
+                    <input type="radio" id="byindia" name="aqistandard" onclick="standardvalue(1)"><label
+                        for="byindia">India</label>
+                    <input type="radio" id="byus" name="aqistandard" onclick="standardvalue(2)"><label for="byus"> US
+                        EPA</label>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wholeline sectionpart">
+                <div class="centrediv">
+                <div class="wholeline">
+                <span class="fonthm mainheading">
+                4.<label for="charttype" class="fontm">Chart Type</label> :
+                </span>
+                <select id="charttype" class="box">
+                    <option value="line">Line</option>
+                    <option value="bar">Bar</option>
+                    <option value="radar">Radar</option>
+                </select>
+                </div>
+            </div>
+            </div>
+            <div class="wholeline sectionpart">
+                <div class="centrediv">
+                <div class="wholeline mainheading fonthm">
+                    5.<label class="fontm">Data aggregation type</label> :
+                </div>
+                <input type="radio" id="bydaily" name="datafreuencytype" onclick="frequencyvalue(1)"><label
+                    for="bydaily">Daily</label>
+                <input type="radio" id="byweekly" name="datafreuencytype" onclick="frequencyvalue(2)" checked><label
+                    for="byweekly">Weekly</label>
+                <input type="radio" id="bymonthly" name="datafreuencytype" onclick="frequencyvalue(3)"><label
+                    for="bymonthly">Monthly</label>
+                <input type="radio" id="byyearly" name="datafreuencytype" onclick="frequencyvalue(4)"><label
+                    for="byyearly">Yearly</label>
+                </div>
+            </div>
+            <div class="wholeline sectionpart">
+                <div class="centrediv">
+                <div class="wholeline">
+                    <div class="mainheading fonthm">
+                        6.<label class="fontm">Compare with another city</label> :
+                    </div>
+                    <input type="radio" id="yes" name="comparecitydata" onclick="enablecompare()"><label
+                        for="yes">Yes</label>
+                    <input type="radio" id="no" name="comparecitydata" onclick="disablecompare()"><label
+                        for="no">No</label>
+                </div>
+                <div class="wholeline">
+                <label for="comparecity" class="mainheading">Compare City</label>
+                <input type="text" id="comparecity" class="box" placeholder="Enter The Compare City" required>
+              </div>
+              </div>
+            </div>
+            <div class="wholeline sectionpart">
+                <div class="centrediv">
+                <span id="status" class="wholeline fontsm">status</span>
+                </div>
+            </div>
+            <div class="wholeline sectionpart">
+                <div class="centrediv">
+                <input type="reset" class="box" id="reset">
+                <input type="button" class="box" id="submit" value="Generate Graph" onclick="fun()">
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+    <div id="charts">
+    </div>
+    <div>
+        <p id="nodata"></p>
+    </div>
+    <div>
+        <p id="nodata1"></p>
+    </div>
+    <div id="footer">
+        <div class="wholeline wholelinecentre">
+            <a href="https://en.wikipedia.org/wiki/Air_quality_index" title="Find out more about AQI Index"
+                target="_blank">Know more about AQI Index</a>
+            <a href="https://www.drishtiias.com/images/uploads/1585556748_image1.jpg"
+                title="Find out AQI Index (INDIAN Standard) ranges" target="_blank">INDIAN standard</a>
+            <a href="https://www.epa.gov/sites/production/files/2014-09/aqiguidepm.png"
+                title="Find out AQI Index (US EPA Standard) ranges" target="_blank">US EPA standard</a>
+            <a href="https://aqicn.org/map/india/" title="List of indian cities for which you can get data"
+                target="_blank">Indian cities with data</a>
+        </div>
+    </div>
+    <div class="wholeline lastmessage wholelinecentre">
+        * first search may take more than a minute.
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script type="text/javascript" src="apikey.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="Projectupperapi.js"></script>
+    <script src="Project.js"></script>
+</body>
+
+</html>
